@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --primary: #2563eb;
@@ -29,15 +28,16 @@
       overflow-x: hidden;
     }
 
+    /* ── NAVBAR ─────────────────────────────────────── */
     .navbar {
       background: rgba(255,255,255,0.97);
-      -webkit-backdrop-filter: blur(12px);
-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
       box-shadow: 0 2px 20px rgba(0,0,0,0.08);
       padding: 0.8rem 0;
       position: sticky;
       top: 0;
       z-index: 1000;
+      transition: all 0.3s ease;
     }
 
     .navbar-brand {
@@ -53,17 +53,43 @@ backdrop-filter: blur(12px);
       width: 38px;
       height: 38px;
       border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 2px solid var(--primary);
     }
 
     .nav-link {
       color: var(--secondary) !important;
       font-weight: 500;
+      margin: 0 0.3rem;
+      transition: color 0.3s ease;
+      font-size: 0.93rem;
     }
 
+    .nav-link:hover { color: var(--primary) !important; }
+
+    /* ── HERO ───────────────────────────────────────── */
     .hero {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
       padding: 100px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="g" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/></pattern></defs><rect width="100%25" height="100%25" fill="url(%23g)"/></svg>');
+      opacity: 0.4;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
       text-align: center;
     }
 
@@ -71,65 +97,926 @@ backdrop-filter: blur(12px);
       width: 140px;
       height: 140px;
       border-radius: 50%;
-      margin-bottom: 20px;
-      border: 4px solid rgba(255,255,255,0.4);
+      object-fit: cover;
+      object-position: center top;
+      border: 4px solid rgba(255,255,255,0.45);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      margin-bottom: 1.8rem;
+      animation: fadeInUp 0.7s ease both;
     }
 
-    .section-title {
-      font-size: 2rem;
+    .hero h1 {
+      font-size: 3.2rem;
       font-weight: 800;
-      margin-bottom: 10px;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.5px;
+      animation: fadeInUp 0.7s ease 0.15s both;
     }
 
+    .hero .subtitle {
+      font-size: 1.4rem;
+      font-weight: 300;
+      margin-bottom: 1.2rem;
+      opacity: 0.95;
+      animation: fadeInUp 0.7s ease 0.25s both;
+    }
+
+    .hero .description {
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      opacity: 0.88;
+      line-height: 1.85;
+      animation: fadeInUp 0.7s ease 0.35s both;
+    }
+
+    .hero-buttons { animation: fadeInUp 0.7s ease 0.45s both; }
+
+    .btn-hero {
+      padding: 13px 32px;
+      font-weight: 600;
+      border-radius: 50px;
+      margin: 0.4rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 0.95rem;
+    }
+
+    .btn-white {
+      background: white;
+      color: var(--primary);
+      border: 2px solid white;
+    }
+
+    .btn-white:hover {
+      background: transparent;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.2);
+    }
+
+    .btn-outline-white {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.75);
+    }
+
+    .btn-outline-white:hover {
+      background: white;
+      color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.2);
+    }
+
+    .social-links {
+      margin-top: 2rem;
+      animation: fadeInUp 0.7s ease 0.55s both;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      margin: 0 0.9rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .social-links a:hover { transform: translateY(-4px); opacity: 0.8; }
+
+    /* ── SECTION COMMONS ────────────────────────────── */
     section { padding: 80px 0; }
 
-    #about { background: #f8fafc; }
+    .section-title {
+      font-size: 2.3rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      color: var(--dark);
+      position: relative;
+      display: inline-block;
+      letter-spacing: -0.3px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 56px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      color: var(--secondary);
+      font-size: 1.05rem;
+      margin-top: 1.4rem;
+      margin-bottom: 2.8rem;
+    }
+
+    /* ── ABOUT ──────────────────────────────────────── */
+    #about { background: var(--light); }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 1.5rem 1.2rem;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .stat-card:hover { transform: translateY(-5px); box-shadow: 0 8px 28px rgba(0,0,0,0.11); }
+
+    .stat-number {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .stat-label {
+      color: var(--secondary);
+      font-size: 0.85rem;
+      margin-top: 0.4rem;
+      font-weight: 500;
+    }
 
     .about-text p {
       color: var(--secondary);
       margin-bottom: 1rem;
-      line-height: 1.8;
+      font-size: 0.97rem;
+      line-height: 1.85;
+    }
+
+    /* ── SKILLS ─────────────────────────────────────── */
+    #skills { background: white; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .skill-category {
+      background: var(--light);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.1);
+      background: white;
+    }
+
+    .skill-category-icon {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .skill-category h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .skill-tag {
+      background: white;
+      color: var(--secondary);
+      padding: 0.45rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid #e2e8f0;
+      transition: all 0.25s ease;
+      cursor: default;
+    }
+
+    .skill-tag:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* ── PROJECTS ───────────────────────────────────── */
+    #projects { background: var(--light); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      transition: all 0.35s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 14px 44px rgba(0,0,0,0.14);
+    }
+
+    .project-header {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      padding: 2rem 2rem 1.8rem;
+      position: relative;
+    }
+
+    .project-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="28" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1"/></svg>') repeat;
+    }
+
+    .project-icon {
+      font-size: 2.4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-body { padding: 1.8rem; }
+
+    .project-body h5 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+      color: var(--dark);
+    }
+
+    .project-body p {
+      color: var(--secondary);
+      font-size: 0.9rem;
+      line-height: 1.75;
+      margin-bottom: 1.2rem;
+    }
+
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.4rem; }
+
+    .tech-badge {
+      background: var(--light);
+      color: var(--primary);
+      padding: 0.35rem 0.85rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: 1px solid #dbeafe;
+    }
+
+    .project-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .project-link:hover { color: var(--accent); gap: 10px; }
+
+    /* ── EXPERIENCE ─────────────────────────────────── */
+    #experience { background: white; }
+
+    .timeline {
+      position: relative;
+      padding-left: 3rem;
+      margin-top: 1rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--primary), var(--accent));
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-left: 2rem;
+    }
+
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -3.6rem;
+      top: 4px;
+      width: 22px;
+      height: 22px;
+      background: var(--primary);
+      border: 4px solid white;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px #dbeafe;
+    }
+
+    .timeline-content {
+      background: var(--light);
+      padding: 1.8rem 2rem;
+      border-radius: 14px;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+      transform: translateX(4px);
+    }
+
+    .timeline-date {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.88rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .timeline-content h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      color: var(--dark);
+    }
+
+    .timeline-content h5 {
+      color: var(--secondary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-content ul { list-style: none; padding: 0; margin: 0; }
+
+    .timeline-content li {
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      color: var(--secondary);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    .timeline-content li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    /* ── EDUCATION ──────────────────────────────────── */
+    #education { background: var(--light); }
+
+    .education-card {
+      background: white;
+      padding: 1.8rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--primary);
+    }
+
+    .education-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.11);
+    }
+
+    .education-year {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      margin-bottom: 0.9rem;
+      font-size: 0.85rem;
+    }
+
+    .education-card h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--dark);
+    }
+
+    .education-card p {
+      color: var(--secondary);
+      margin: 0;
+      font-size: 0.93rem;
+    }
+
+    .education-institution {
+      font-weight: 600;
+      color: var(--primary);
+      margin-top: 0.4rem;
+    }
+
+    /* ── CONTACT ────────────────────────────────────── */
+    #contact {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    #contact .section-title,
+    #contact .section-subtitle { color: white; }
+
+    #contact .section-title::after { background: rgba(255,255,255,0.7); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .contact-item {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(12px);
+      padding: 1.8rem 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.22);
+      text-decoration: none;
+      color: white;
+      display: block;
+    }
+
+    .contact-item:hover {
+      background: rgba(255,255,255,0.22);
+      transform: translateY(-5px);
+      color: white;
+    }
+
+    .contact-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.9rem;
+      opacity: 0.92;
+    }
+
+    .contact-item h5 {
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      font-size: 1rem;
+    }
+
+    .contact-item p {
+      margin: 0;
+      opacity: 0.85;
+      font-size: 0.9rem;
+      word-break: break-all;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 2rem 0;
+      font-size: 0.9rem;
+    }
+
+    footer p { margin: 0.2rem 0; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: white; }
+
+    /* ── SCROLL TOP ─────────────────────────────────── */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--primary);
+      color: white;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(37,99,235,0.45);
+      transition: all 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 999;
+      border: none;
+    }
+
+    .scroll-top.visible { opacity: 1; pointer-events: all; }
+    .scroll-top:hover { transform: translateY(-4px); background: var(--primary-dark); }
+
+    /* ── ANIMATIONS ─────────────────────────────────── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero .subtitle { font-size: 1.15rem; }
+      .section-title { font-size: 1.9rem; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .timeline { padding-left: 2.2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 70px 16px 60px; }
+      .hero-photo { width: 110px; height: 110px; }
+      .about-stats { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img src="25407.jpeg" alt="GR">
-      Gishor Rajendra
-    </a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <img src="25407.jpeg" class="hero-photo" alt="profile">
-  <h1>Gishor Rajendra</h1>
-  <p>Software Engineer</p>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <h2 class="section-title">About Me</h2>
-
-    <div class="about-text">
-
-      <p>Hi! I'm <strong>Gishor Rajendra</strong>, a passionate <strong>Software Engineer</strong> from Neervely, Sri Lanka.</p>
-
-      <p>As a committed worker, I bring a strong work ethic and a proactive mindset to every project I undertake. I take pride in my ability to tackle complex problems with a systematic approach, ensuring that tasks are not just completed but executed with precision and efficiency. My dedication to delivering high-quality results is reflected in my consistent track record of meeting and exceeding project goals.</p>
-
-      <p>I thrive in collaborative environments, having worked in Agile Scrum teams, and I enjoy solving complex problems with clean, efficient code. I am always eager to learn new technologies and grow as a developer.</p>
-
-      <p>Beyond coding, I value strong communication, leadership, and building meaningful relationships — both in teams and with clients.</p>
-
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="25407.jpeg" alt="GR">
+        Gishor Rajendra
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</section>
+  </nav>
 
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="25407.jpeg" alt="Gishor Rajendra" class="hero-photo">
+      <h1>Gishor Rajendra</h1>
+      <p class="subtitle">Software Engineer</p>
+      <p class="description">
+        Passionate about building robust backend systems, cross-platform mobile applications, and intelligent automation workflows. With hands-on experience in <strong>Java, Spring Boot, React.js</strong> and <strong>Flutter</strong>, I deliver clean, scalable solutions that drive real-world efficiency.
+      </p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-hero btn-white">Get In Touch</a>
+        <a href="#projects" class="btn-hero btn-outline-white">View Projects</a>
+      </div>
+      <div class="social-links">
+        <a href="https://github.com/Gishor04" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/gishor-rajendra" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:gishor14@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title fade-up">About Me</h2>
+      <p class="section-subtitle fade-up">Get to know me better</p>
+      <div class="about-text fade-up">
+        <p>Hi! I'm <strong>Gishor Rajendra</strong>, a passionate <strong>Software Engineer</strong> from Neervely, Sri Lanka.</p>
+
+<p>As a committed worker, I bring a strong work ethic and a proactive mindset to every project I undertake. I take pride in my ability to tackle complex problems with a systematic approach, ensuring that tasks are not just completed but executed with precision and efficiency. My dedication to delivering high-quality results is reflected in my consistent track record of meeting and exceeding project goals.</p>
+
+<p>I thrive in collaborative environments, having worked in Agile Scrum teams, and I enjoy solving complex problems with clean, efficient code. I am always eager to learn new technologies and grow as a developer.</p>
+
+<p>Beyond coding, I value strong communication, leadership, and building meaningful relationships — both in teams and with clients.</p>
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="stat-number">1+</div>
+            <div class="stat-label">Years of Experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">3+</div>
+            <div class="stat-label">Projects Completed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Technologies</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">2</div>
+            <div class="stat-label">Languages Spoken</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ── -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title fade-up">Skills &amp; Technologies</h2>
+      <p class="section-subtitle fade-up">My technical expertise</p>
+      <div class="skills-grid">
+        <div class="skill-category fade-up">
+          <div class="skill-category-icon"><i class="fas fa-code"></i></div>
+          <h4>Programming Languages</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">Dart</span>
+          </div>
+        </div>
+        <div class="skill-category fade-up">
+          <div class="skill-category-icon"><i class="fas fa-layer-group"></i></div>
+          <h4>Frameworks &amp; Libraries</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">React.js</span>
+            <span class="skill-tag">Flutter</span>
+            <span class="skill-tag">Bootstrap</span>
+          </div>
+        </div>
+        <div class="skill-category fade-up">
+          <div class="skill-category-icon"><i class="fas fa-database"></i></div>
+          <h4>Database &amp; Storage</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">SQL Server</span>
+          </div>
+        </div>
+        <div class="skill-category fade-up">
+          <div class="skill-category-icon"><i class="fas fa-robot"></i></div>
+          <h4>Automation &amp; AI</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">N8N</span>
+            <span class="skill-tag">AI Agents</span>
+            <span class="skill-tag">OCR</span>
+            <span class="skill-tag">Workflow Automation</span>
+          </div>
+        </div>
+        <div class="skill-category fade-up">
+          <div class="skill-category-icon"><i class="fas fa-tools"></i></div>
+          <h4>Tools &amp; Version Control</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">VS Code</span>
+            <span class="skill-tag">Postman</span>
+            <span class="skill-tag">Trello</span>
+          </div>
+        </div>
+        <div class="skill-category fade-up">
+          <div class="skill-category-icon"><i class="fas fa-users"></i></div>
+          <h4>Soft Skills</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Leadership</span>
+            <span class="skill-tag">Teamwork</span>
+            <span class="skill-tag">Communication</span>
+            <span class="skill-tag">Critical Thinking</span>
+            <span class="skill-tag">Agile / Scrum</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ── -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title fade-up">Featured Projects</h2>
+      <p class="section-subtitle fade-up">Some of my recent work</p>
+      <div class="projects-grid">
+        <div class="project-card fade-up">
+          <div class="project-header">
+            <div class="project-icon"><i class="fas fa-hotel"></i></div>
+          </div>
+          <div class="project-body">
+            <h5>Hotel Management System</h5>
+            <p>Java-based hotel management system with guest reservations, room allocation, and billing. MySQL database with Java Servlets backend and a clean web frontend.</p>
+            <div class="tech-stack">
+              <span class="tech-badge">Java</span>
+              <span class="tech-badge">HTML/CSS</span>
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">JavaScript</span>
+            </div>
+            <a href="https://github.com/Gishor04" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+        <div class="project-card fade-up">
+          <div class="project-header">
+            <div class="project-icon"><i class="fas fa-heartbeat"></i></div>
+          </div>
+          <div class="project-body">
+            <h5>Fitness App</h5>
+            <p>Social media–style platform for workout plans, diet meal plans, and healthy living tips. Features user authentication and follow/unfollow functionality.</p>
+            <div class="tech-stack">
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">Node.js</span>
+              <span class="tech-badge">Spring Boot</span>
+              <span class="tech-badge">HTML/CSS</span>
+            </div>
+            <a href="https://github.com/Gishor04" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+        <div class="project-card fade-up">
+          <div class="project-header">
+            <div class="project-icon"><i class="fas fa-mobile-alt"></i></div>
+          </div>
+          <div class="project-body">
+            <h5>Tellie Application</h5>
+            <p>Cross-platform Flutter mobile application with a scalable, responsive UI targeting Android, iOS, and web platforms simultaneously from a single codebase.</p>
+            <div class="tech-stack">
+              <span class="tech-badge">Flutter</span>
+              <span class="tech-badge">Dart</span>
+              <span class="tech-badge">C++</span>
+              <span class="tech-badge">HTML/CSS</span>
+            </div>
+            <a href="https://github.com/Gishor04" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ── -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title fade-up">Work Experience</h2>
+      <p class="section-subtitle fade-up">My professional journey</p>
+      <div class="timeline">
+        <div class="timeline-item fade-up">
+          <div class="timeline-content">
+            <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 2024 – Present</div>
+            <h4>Automation Engineer (Junior)</h4>
+            <h5>Digitweb Lanka (PVT) LTD — Jaffna</h5>
+            <ul>
+              <li>1 year experience in workflow automation using N8N.</li>
+              <li>Technical analysis of websites for efficiency &amp; performance improvements.</li>
+              <li>Developed AI Agents, OCR solutions for PDF/image data extraction, and automated attachment downloading workflows.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item fade-up">
+          <div class="timeline-content">
+            <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 2023 – 2024</div>
+            <h4>Backend Developer Intern</h4>
+            <h5>Samuel Gnanam IT Center — Sri Lanka</h5>
+            <ul>
+              <li>Built RESTful APIs with Java &amp; Spring Boot for a Defect Tracker System.</li>
+              <li>Designed and optimized MySQL relational databases for application use.</li>
+              <li>Implemented Spring Security + JWT with role-based access control (RBAC).</li>
+              <li>Performed API testing with Postman; wrote unit tests with JUnit and Mockito.</li>
+              <li>Collaborated in Agile Scrum environment using Git/GitHub and Trello.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EDUCATION ── -->
+  <section id="education">
+    <div class="container">
+      <h2 class="section-title fade-up">Education</h2>
+      <p class="section-subtitle fade-up">My academic background</p>
+      <div class="row g-4">
+        <div class="col-md-6 fade-up">
+          <div class="education-card">
+            <span class="education-year"><i class="fas fa-graduation-cap me-1"></i> 2022 – Present</span>
+            <h4>BSc (Hons) in Information Technology</h4>
+            <p class="education-institution">Sri Lanka Institute of Information Technology (SLIIT)</p>
+            <p>Studying core software engineering disciplines including software architecture, algorithms, databases, and modern development practices.</p>
+          </div>
+        </div>
+        <div class="col-md-6 fade-up">
+          <div class="education-card">
+            <span class="education-year"><i class="fas fa-school me-1"></i> 2020</span>
+            <h4>GCE Advanced Level</h4>
+            <p class="education-institution">Neervely, Jaffna — Sri Lanka</p>
+            <p>Completed Advanced Level examinations with a focus on physical science and mathematics.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title fade-up">Contact</h2>
+      <p class="section-subtitle fade-up">I'm open to new opportunities — let's connect!</p>
+      <div class="contact-grid">
+        <a href="mailto:gishor14@gmail.com" class="contact-item fade-up">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <h5>Email</h5>
+          <p>gishor14@gmail.com</p>
+        </a>
+        <a href="tel:0768445828" class="contact-item fade-up">
+          <div class="contact-icon"><i class="fas fa-phone"></i></div>
+          <h5>Phone</h5>
+          <p>0768445828</p>
+        </a>
+        <a href="https://linkedin.com/in/gishor-rajendra" target="_blank" class="contact-item fade-up">
+          <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+          <h5>LinkedIn</h5>
+          <p>gishor-rajendra</p>
+        </a>
+        <a href="https://github.com/Gishor04" target="_blank" class="contact-item fade-up">
+          <div class="contact-icon"><i class="fab fa-github"></i></div>
+          <h5>GitHub</h5>
+          <p>github.com/Gishor04</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p><strong style="color:rgba(255,255,255,0.8)">Gishor Rajendra</strong></p>
+    <p>&copy; 2025 &nbsp;·&nbsp; Software Engineer &nbsp;·&nbsp; Sri Lanka</p>
+    <p style="margin-top:0.5rem">
+      <a href="https://github.com/Gishor04" target="_blank">GitHub</a>
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <a href="https://linkedin.com/in/gishor-rajendra" target="_blank">LinkedIn</a>
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <a href="mailto:gishor14@gmail.com">Email</a>
+    </p>
+  </footer>
+
+  <!-- Scroll-to-top -->
+  <button class="scroll-top" id="scrollTop" title="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Scroll-to-top visibility
+    const scrollBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+    scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Fade-up on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+          // Close mobile nav if open
+          const navCollapse = document.getElementById('navbarNav');
+          if (navCollapse.classList.contains('show')) {
+            document.querySelector('.navbar-toggler').click();
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
