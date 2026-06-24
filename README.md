@@ -1,5 +1,5 @@
 <h1 align="center">Hi 👋, I'm Gishor</h1>
-<h3 align="center">Software Engineer · Backend · Mobile · Automation</h3>
+<h3 align="center">Software Engineer</h3>
 <p align="center"><em>BSc (Hons) in Information Technology, Sri Lanka Institute of Information Technology (SLIIT)</em></p>
 
 ---
