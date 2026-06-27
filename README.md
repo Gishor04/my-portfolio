@@ -19,7 +19,7 @@
 ## 🧑‍💻 About Me
 
 - 🎓 **BSc (Hons) in Information Technology** — SLIIT *(2022 – Present)*
-- 💼 **Automation Engineer (Junior)** @ Digitweb Lanka (PVT) LTD — Jaffna *(2024 – Present)*
+- 💼 **Automation Engineer (Junior)** @ Digitweb Lanka (PVT) LTD — Jaffna *(2025-2026)*
 - 🌍 Based in **Neervely, Sri Lanka**
 - 🌱 Currently deepening skills in **AI Agents, N8N Workflow Automation & Spring Boot**
 - 🤝 Open to **collaborations and new opportunities**
