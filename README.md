@@ -2,7 +2,7 @@
 
 # 👋 Hi, I'm Gishor Rajendra
 
-### 🚀 Software Engineer | Backend • Mobile • Automation
+### 🚀 Software Engineer |
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gishor-rajendra)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Gishor04)
@@ -11,9 +11,7 @@
 
 <img src="25407.jpeg" width="150" style="border-radius: 50%;" alt="Gishor Rajendra"/>
 
-*Passionate about building robust backend systems, cross-platform mobile applications,*
-*and intelligent automation workflows.*
-
+🌱 I'm currently working on **real-world software engineering projects** — building robust backend systems, cross-platform mobile applications, and intelligent workflow automation solutions.
 </div>
 
 ---
